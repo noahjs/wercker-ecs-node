@@ -8,9 +8,9 @@ build:
         code: |
           echo "node version $(node -v) running"
           echo "npm version $(npm -v) running"
-deploy:
+deploy-dockerhub:
   box: node
-  dockerhub:
+  steps:
     - npm-install
     - internal/docker-push:
       username: $DOCKER_USER
@@ -18,7 +18,9 @@ deploy:
       repository: noahjs/wercker-example
       cmd: "DEPLOYMENT=aaa node /pipeline/source/server.js"
       ports: 5001
-  aws-ecs:
+deploy-aws-ecs:
+  box: node
+  steps:
     - script:
       name: copy
       code: mkdir /app && cp wercker-app.json /app/
