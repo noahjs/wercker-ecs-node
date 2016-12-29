@@ -2,27 +2,20 @@
   "containerDefinitions": [
     {
       "volumesFrom": [],
-      "portMappings": [],
       "portMappings": [
-        {
-          "containerPort": 5001,
-          "hostPort": 82
-        }
+        { "containerPort": 5001, "hostPort": 82 }
       ],
       "command": [
-        "PORT=5001",
-        "DEPLOYMENT=bbb",
         "node",
         "/pipeline/source/server.js"
       ],
-      "environment": [],
+      "environment": [
+        { "name" : "PORT", "value" : "5001" },
+        { "name" : "DEPLOYMENT", "value" : "bbb" },
+        { "name" : "NODE_ENV", "value" : "production" }
+      ],
       "essential": true,
-      "entryPoint": null,
-      "links": [],
-      "mountPoints": [],
-      "memory": 500,
       "name": "web-b",
-      "cpu": 10,
       "image": "noahjs/wercker-example"
     }
   ],
