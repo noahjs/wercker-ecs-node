@@ -28,7 +28,7 @@ deploy-aws-ecs:
       cluster-name: wercker-example
       service-name: example-a
       task-definition-name: example-a
-      task-definition-file: /devops/ecs-a.json
+      task-definition-file: /pipeline/source/devops/ecs-a.json
       minimum-running-tasks: 1
     - tonnu/aws-ecs:
       key: $AWS_ACCESS_KEY
@@ -37,5 +37,5 @@ deploy-aws-ecs:
       cluster-name: wercker-example
       service-name: example-b
       task-definition-name: example-b
-      task-definition-file: /devops/ecs-b.json
+      task-definition-file: /pipeline/source/devops/ecs-b.json
       minimum-running-tasks: 1
