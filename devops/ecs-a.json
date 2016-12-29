@@ -1,7 +1,6 @@
 {
   "containerDefinitions": [
     {
-      "volumesFrom": [],
       "portMappings": [
         { "containerPort": 5001, "hostPort": 81 }
       ],
