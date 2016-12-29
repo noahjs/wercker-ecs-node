@@ -29,7 +29,7 @@ deploy-aws-aaa:
       service-name: example-a
       task-definition-name: example-a
       task-definition-file: /pipeline/source/devops/ecs-a.json
-      minimum-running-tasks: 1
+      minimum-running-tasks: 2
 deploy-aws-bbb:
   box: node
   steps:
@@ -41,4 +41,4 @@ deploy-aws-bbb:
       service-name: example-b
       task-definition-name: example-b
       task-definition-file: /pipeline/source/devops/ecs-b.json
-      minimum-running-tasks: 1
+      minimum-running-tasks: 2
