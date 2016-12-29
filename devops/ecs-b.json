@@ -1,26 +1,29 @@
 [
   {
     "volumesFrom": [],
+    "memory": 300,
     "portMappings": [
       {
+        "hostPort": 82,
         "containerPort": 5001,
-        "hostPort": 82
+        "protocol": "tcp"
       }
     ],
+    "essential": true,
+    "entryPoint": [],
+    "mountPoints": [],
+    "name": "web-b",
+    "environment": [
+      { "name" : "PORT", "value" : "5001" },
+      { "name" : "DEPLOYMENT", "value" : "bbb" },
+      { "name" : "NODE_ENV", "value" : "production" }
+    ],
+    "links": [],
+    "image": "noahjs/wercker-example",
     "command": [
-      "PORT=5001",
-      "DEPLOYMENT=bbb",
       "node",
       "/pipeline/source/server.js"
     ],
-    "environment": [],
-    "essential": true,
-    "entryPoint": null,
-    "links": [],
-    "mountPoints": [],
-    "memory": 500,
-    "name": "web-b",
-    "cpu": 10,
-    "image": "noahjs/wercker-example"
+    "cpu": 10
   }
 ]

@@ -15,7 +15,7 @@
     "name": "web-a",
     "environment": [
       { "name" : "PORT", "value" : "5001" },
-      { "name" : "DEPLOYMENT", "value" : "bbb" },
+      { "name" : "DEPLOYMENT", "value" : "aaa" },
       { "name" : "NODE_ENV", "value" : "production" }
     ],
     "links": [],
