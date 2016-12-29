@@ -8,33 +8,35 @@ build:
         code: |
           echo "node version $(node -v) running"
           echo "npm version $(npm -v) running"
-push-dockerhub:
-  - npm-install
-  - internal/docker-push:
-    username: $DOCKER_USER
-    password: $DOCKER_PASS
-    repository: noahjs/wercker-example
-    cmd: "DEPLOYMENT=aaa node /pipeline/source/server.js"
-    ports: 5001
-deploy-aws-ecs:
-  - script:
-    name: copy
-    code: mkdir /app && cp wercker-app.json /app/
-  - tonnu/aws-ecs:
-    key: $AWS_ACCESS_KEY
-    secret: $AWS_SECRET_KEY
-    region: us-west-2
-    cluster-name: wercker-example
-    service-name: example-a
-    task-definition-name: example-a
-    task-definition-file: /devops/ecs-a.json
-    minimum-running-tasks: 1
-  - tonnu/aws-ecs:
-    key: $AWS_ACCESS_KEY
-    secret: $AWS_SECRET_KEY
-    region: us-west-2
-    cluster-name: wercker-example
-    service-name: example-b
-    task-definition-name: example-b
-    task-definition-file: /devops/ecs-b.json
-    minimum-running-tasks: 1
+deploy:
+  box: node
+  dockerhub:
+    - npm-install
+    - internal/docker-push:
+      username: $DOCKER_USER
+      password: $DOCKER_PASS
+      repository: noahjs/wercker-example
+      cmd: "DEPLOYMENT=aaa node /pipeline/source/server.js"
+      ports: 5001
+  aws-ecs:
+    - script:
+      name: copy
+      code: mkdir /app && cp wercker-app.json /app/
+    - tonnu/aws-ecs:
+      key: $AWS_ACCESS_KEY
+      secret: $AWS_SECRET_KEY
+      region: us-west-2
+      cluster-name: wercker-example
+      service-name: example-a
+      task-definition-name: example-a
+      task-definition-file: /devops/ecs-a.json
+      minimum-running-tasks: 1
+    - tonnu/aws-ecs:
+      key: $AWS_ACCESS_KEY
+      secret: $AWS_SECRET_KEY
+      region: us-west-2
+      cluster-name: wercker-example
+      service-name: example-b
+      task-definition-name: example-b
+      task-definition-file: /devops/ecs-b.json
+      minimum-running-tasks: 1
