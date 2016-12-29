@@ -21,9 +21,6 @@ deploy-dockerhub:
 deploy-aws-ecs:
   box: node
   steps:
-    - script:
-      name: copy
-      code: mkdir /app && cp wercker-app.json /app/
     - tonnu/aws-ecs:
       key: $AWS_ACCESS_KEY
       secret: $AWS_SECRET_KEY
