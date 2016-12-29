@@ -1,23 +1,19 @@
-{
-  "containerDefinitions": [
-    {
-      "portMappings": [
-        { "containerPort": 5001, "hostPort": 82 }
-      ],
-      "command": [
-        "node",
-        "/pipeline/source/server.js"
-      ],
-      "environment": [
-        { "name" : "PORT", "value" : "5001" },
-        { "name" : "DEPLOYMENT", "value" : "bbb" },
-        { "name" : "NODE_ENV", "value" : "production" }
-      ],
-      "essential": true,
-      "name": "web-b",
-      "image": "noahjs/wercker-example"
-    }
-  ],
-  "volumes": [],
-  "family": "example-b"
-}
+[
+  {
+    "portMappings": [
+      { "containerPort": 5001, "hostPort": 82 }
+    ],
+    "command": [
+      "node",
+      "/pipeline/source/server.js"
+    ],
+    "environment": [
+      { "name" : "PORT", "value" : "5001" },
+      { "name" : "DEPLOYMENT", "value" : "bbb" },
+      { "name" : "NODE_ENV", "value" : "production" }
+    ],
+    "essential": true,
+    "name": "web-b",
+    "image": "noahjs/wercker-example"
+  }
+]

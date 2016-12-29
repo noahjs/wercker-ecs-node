@@ -1,43 +1,19 @@
-{
-  "requiresAttributes": [],
-  "networkMode": "bridge",
-  "status": "ACTIVE",
-  "taskRoleArn": null,
-  "containerDefinitions": [
-    {
-      "volumesFrom": [],
-      "memory": 500,
-      "extraHosts": null,
-      "dnsServers": null,
-      "disableNetworking": null,
-      "dnsSearchDomains": null,
-      "portMappings": [],
-      "hostname": null,
-      "essential": true,
-      "entryPoint": null,
-      "mountPoints": [],
-      "name": "web-a",
-      "ulimits": null,
-      "dockerSecurityOptions": null,
-      "environment": [],
-      "links": [],
-      "workingDirectory": null,
-      "readonlyRootFilesystem": null,
-      "image": "noahjs/wercker-example",
-      "command": [
-        "DEPLOYMENT=aaa",
-        "node",
-        "/pipeline/source/server.js"
-      ],
-      "user": null,
-      "dockerLabels": null,
-      "logConfiguration": null,
-      "cpu": 10,
-      "privileged": null,
-      "memoryReservation": null
-    }
-  ],
-  "placementConstraints": [],
-  "volumes": [],
-  "family": "example-a"
-}
+[
+  {
+    "portMappings": [
+      { "containerPort": 5001, "hostPort": 81 }
+    ],
+    "command": [
+      "node",
+      "/pipeline/source/server.js"
+    ],
+    "environment": [
+      { "name" : "PORT", "value" : "5001" },
+      { "name" : "DEPLOYMENT", "value" : "aaa" },
+      { "name" : "NODE_ENV", "value" : "production" }
+    ],
+    "essential": true,
+    "name": "web-a",
+    "image": "noahjs/wercker-example"
+  }
+]
