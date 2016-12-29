@@ -18,7 +18,7 @@ deploy-dockerhub:
       repository: noahjs/wercker-example
       cmd: "DEPLOYMENT=aaa node /pipeline/source/server.js"
       ports: 5001
-deploy-aws-ecs:
+deploy-aws-aaa:
   box: node
   steps:
     - tonnu/aws-ecs:
@@ -30,6 +30,9 @@ deploy-aws-ecs:
       task-definition-name: example-a
       task-definition-file: /pipeline/source/devops/ecs-a.json
       minimum-running-tasks: 1
+deploy-aws-bbb:
+  box: node
+  steps:
     - tonnu/aws-ecs:
       key: $AWS_ACCESS_KEY
       secret: $AWS_SECRET_KEY
