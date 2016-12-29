@@ -3,7 +3,14 @@
     {
       "volumesFrom": [],
       "portMappings": [],
+      "portMappings": [
+        {
+          "containerPort": 5001,
+          "hostPort": 82
+        }
+      ],
       "command": [
+        "PORT=5001",
         "DEPLOYMENT=bbb",
         "node",
         "/pipeline/source/server.js"

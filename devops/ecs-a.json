@@ -2,8 +2,14 @@
   "containerDefinitions": [
     {
       "volumesFrom": [],
-      "portMappings": [],
+      "portMappings": [
+        {
+          "containerPort": 5001,
+          "hostPort": 81
+        }
+      ],
       "command": [
+        "PORT=5001",
         "DEPLOYMENT=aaa",
         "node",
         "/pipeline/source/server.js"
