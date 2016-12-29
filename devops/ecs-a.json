@@ -1,0 +1,24 @@
+{
+  "containerDefinitions": [
+    {
+      "volumesFrom": [],
+      "portMappings": [],
+      "command": [
+        "DEPLOYMENT=aaa",
+        "node",
+        "/pipeline/source/server.js"
+      ],
+      "environment": [],
+      "essential": true,
+      "entryPoint": null,
+      "links": [],
+      "mountPoints": [],
+      "memory": 500,
+      "name": "web-a",
+      "cpu": 10,
+      "image": "noahjs/wercker-example"
+    }
+  ],
+  "volumes": [],
+  "family": "example-a"
+}
